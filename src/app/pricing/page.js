@@ -11,6 +11,8 @@ export default function PricingPage() {
                 h2Text={'Out pricing is very simple'}
             />
 
+            <div className="bg-white">Free</div>
+
         </div>
         
     );
