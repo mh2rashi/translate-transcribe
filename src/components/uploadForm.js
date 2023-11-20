@@ -1,17 +1,24 @@
 'use client';
+import axios from "axios";
 import UploadIcon from "../components/uploadIcon";
 
 
 export default function UploadForm() {
 
-    function upload(ev) {
+    async function upload(ev) {
         ev.preventDefault();
-        console.log(ev);
+       
 
         const files = ev.target.files;
 
         if (files.length > 0) {
             const file = files[0];
+            const res = await axios.postForm('/api/upload', {
+                file,
+            });
+
+            console.log(res.data);
+
         }
 
     }
@@ -23,9 +30,10 @@ export default function UploadForm() {
 
             <UploadIcon />
 
-            Choose file
+            <span>Choose file</span>
 
             <input onChange={upload} type="file" className="hidden" />
+
         </label>
         
     );
